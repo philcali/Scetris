@@ -59,7 +59,7 @@ object Storage {
   
   private def load(s : String) = {
     Map() ++ open(s).getLines.map(l => {
-      val values = l.take(l.size - 1).split("=")
+      val values = l.split("=")
       (values(0) -> Integer.parseInt(values(1)))
     })
   }
@@ -70,15 +70,15 @@ object Storage {
     val highesttetris = oldData.get("highest.tetris").getOrElse(0)
     
     val newData = Map("last.run.score" -> score,
-                          "last.run.lines" -> lines,
-                          "last.run.stage"-> stage,
-                          "last.run.tetris"-> tetris,
-                          "total.score" -> (score + oldData.get("total.score").getOrElse(0)),
-                          "total.lines" -> (lines + oldData.get("total.lines").getOrElse(0)),
-                          "total.tetris" -> (tetris + oldData.get("total.tetris").getOrElse(0)),
-                          "highest.lines" -> (if (lines > highestlines) lines else highestlines),
-                          "highest.tetris" -> (if (tetris > highesttetris) tetris else highesttetris),
-                          "highest.score" -> (if (score > highestscore) score else highestscore))
+                      "last.run.lines" -> lines,
+                      "last.run.stage"-> stage,
+                      "last.run.tetris"-> tetris,
+                      "total.score" -> (score + oldData.get("total.score").getOrElse(0)),
+                      "total.lines" -> (lines + oldData.get("total.lines").getOrElse(0)),
+                      "total.tetris" -> (tetris + oldData.get("total.tetris").getOrElse(0)),
+                      "highest.lines" -> (if (lines > highestlines) lines else highestlines),
+                      "highest.tetris" -> (if (tetris > highesttetris) tetris else highesttetris),
+                      "highest.score" -> (if (score > highestscore) score else highestscore))
     
     saveMap("/game_data", newData)
   }

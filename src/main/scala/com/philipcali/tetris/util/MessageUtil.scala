@@ -8,7 +8,8 @@ import org.newdawn.slick.util.ResourceLoader.{getResource => load}
 
 object MessageUtil {
   val props = {
-    Map() ++ open("message.properties").getLines.map(x => {
+    val file = getClass.getClassLoader.getResource("message.properties").getPath
+    Map() ++ open(file).getLines.map(x => {
       val y = x.split("=")
       (y(0) -> y(1))
     }).toList
