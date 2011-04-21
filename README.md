@@ -4,9 +4,7 @@ Scetris is a tetris clone written in Scala with Slick2D, built with sbt using [s
 
 ## Requirements
 
-  * scala 2.8.0
   * sbt 0.7.4
-  * lwjgl >= 2.1.0
 
 ## Comes with what?
 
